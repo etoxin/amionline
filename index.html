@@ -1,0 +1,68 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>Is The Internet Down?</title>
+        <style>
+            body {
+                font-family: sans-serif;
+            }
+            
+            body[data-online="false"] .online {
+                transform: translateX(100vw);
+            }
+
+            body[data-online="true"] .online,
+            body[data-online="false"] .offline {
+                transform: translateX(0vw);
+            }
+
+            body[data-online="true"] .offline {
+                transform: translateX(-100vw);
+            }
+
+            .container {
+                width: 100vw;
+                height: 100vh;
+                position: absolute;
+                transition: transform 250ms;
+                top: 0;
+                left: 0;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .online {
+                background: #4caf50;
+            }
+
+            .offline {
+                background: #f44336;
+            }
+
+            h1 {
+                align-content: center;
+                margin: 0;
+                padding: 0;
+                color: white;
+                font-size: 50vw;
+                line-height: 50vw;
+                text-align: center;
+                text-shadow: 0px 1px 0px #c7c8ca, 0px 2px 0px #b1b3b6, 0px 3px 0px #9d9fa2, 0px 4px 0px #8a8c8e, 0px 5px 0px #77787b, 0px 6px 0px #636466, 0px 7px 0px #4d4d4f, 0px 8px 7px #001135;
+            }
+        </style>
+    </head>
+    <body data-online="true">
+        <div class="container online">
+            <h1>No</h1>
+        </div>
+        <div class="container offline">
+            <h1>Yes</h1>
+        </div>
+        <script>
+            setInterval(function () {
+                document.body.dataset.online = navigator.onLine;
+            }, 300);
+        </script>
+    </body>
+</html>
